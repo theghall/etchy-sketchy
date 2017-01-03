@@ -1,0 +1,23 @@
+/* style.css
+
+This is the style sheet for the etchy-sketchy page
+
+2017-01-03  GH  Created grid-container, grid-row
+*/
+#grid-container {
+height: 960px;
+width: 960px;
+border: solid;
+border-radius: 5px;
+margin: 100px auto;
+padding: 0;
+}
+
+.grid-row {
+height: 60px;
+width: 60px;
+float:left;
+border: none;
+margin: 0;
+padding: 0;
+}
