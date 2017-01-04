@@ -2,22 +2,36 @@
 
 This is the style sheet for the etchy-sketchy page
 
-2017-01-03  GH  Created grid-container, grid-row
+2017-01-03  GH  Created grid-container, grid-square, clear-button
 */
-#grid-container {
-height: 960px;
-width: 960px;
-border: solid;
-border-radius: 5px;
-margin: 100px auto;
-padding: 0;
+
+#clear-button {
+  width:  100px;
+  margin: 20px auto;
+  padding: 0;
 }
 
-.grid-row {
-height: 60px;
-width: 60px;
-float:left;
-border: none;
-margin: 0;
-padding: 0;
+#clear-button:hover {
+  box-shadow: inset 0 0 10px #000000;
+}
+
+#grid-container {
+  height: 960px;
+  width: 960px;
+  border: solid;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 0;
+}
+
+
+.grid-square {
+  /* height and width set for a 16 x 16 grid in a 960 x 960 space */
+  height: 60px;
+  width: 60px;
+  float:left;
+  border: none;
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
 }
