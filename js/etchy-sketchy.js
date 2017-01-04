@@ -2,23 +2,34 @@
 //
 // This file does the bulk of the work to display and interact with the grid
 //
-// 2017=01=03 GH  Created grid, mouseenter function
+// 2017-01-03 GH  Created grid, mouseenter function
+// 2017-01-04 GH  Added Clear Grid functionality 
 //
 var defaultSize = 16; // Grid is even so this is both number of rows and cols
 var currentSize = defaultSize;
-var squareClass = "grid-square"
+var squareClass = "grid-square";
+var containerSize = 0;
 
 $(document).ready(function() {
-  initGrid();
 
-  // "draws" black line as mouse is dragged
-  $('div.grid-square').mouseenter(function() {
-      $(this).css({backgroundColor: "#000000"});
-  });
+  // Get pixel size of the div container for the grid
+  var cssVal = $('#grid-container').css("height");
+  containerSize = cssVal.substr(0,cssVal.indexOf("px"));
+
+  initGrid(defaultSize);
+  initEvents();
+
 });
 
+// initGrid appends DIV elements with the class squareClass which will be the
+// sqaures in our grid.  The grid will be gridSize x gridSize
+var initGrid = function(gridSize) {
 
-var initGrid = function() {
+  currentSize = gridSize;
+
+  // Adjust height and width of DIV elements based on gridSize
+  var squarePixelSize = Math.floor(containerSize/gridSize);
+  var styleString = ' Style="height:' + squarePixelSize + "px; width:" + squarePixelSize + 'px;"';
 
   // This is where the grid will be inserted
   var $gc = $("#grid-container");
@@ -35,10 +46,10 @@ var initGrid = function() {
 
         // Put an id in first div of each row for debugging
         if (j === 1) {
-          divElem = '<div class="' + squareClass + '" id="' + rowId + '" ></div>';
+          divElem = '<div class="' + squareClass + '" id="' + rowId + '\" ' + styleString + '></div>';
         }
         else {
-          divElem =  '<div class="' + squareClass + '"></div>';
+          divElem =  '<div class="' + squareClass + '" ' + styleString + '></div>';
         }
 
         $gc.append(divElem);
@@ -46,6 +57,34 @@ var initGrid = function() {
   }
 }
 
+function initEvents() {
+  // "draws" black line as mouse is dragged
+  var targetElem = "div."+ squareClass;
+  $(targetElem).mouseenter(function() {
+      $(this).css({backgroundColor: "#000000"});
+  });
+}
+
 function clearGrid() {
 
+  var targetElem = "." + squareClass;
+  $('div').remove(targetElem);
+
+  var gridSize = defaultSize;
+
+  //  Ask user for new gridSize
+  do {
+    var askAgain = false;
+
+    gridSize = prompt("What size grid would you like?",defaultSize);
+
+    if (isNaN(gridSize)) {
+      alert("Please enter a number.")
+      askAgain = true;
+    }
+
+  } while (askAgain);
+
+  initGrid(gridSize);
+  initEvents();
 }

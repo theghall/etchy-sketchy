@@ -3,6 +3,8 @@
 This is the style sheet for the etchy-sketchy page
 
 2017-01-03  GH  Created grid-container, grid-square, clear-button
+2017-01-04  GH  Removed height and width from grid-square. They will be set
+                dynamically in etchy-sketchy.js
 */
 
 #clear-button {
@@ -26,9 +28,6 @@ This is the style sheet for the etchy-sketchy page
 
 
 .grid-square {
-  /* height and width set for a 16 x 16 grid in a 960 x 960 space */
-  height: 60px;
-  width: 60px;
   float:left;
   border: none;
   background-color: #FFFFFF;
