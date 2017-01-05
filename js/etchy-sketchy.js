@@ -5,6 +5,7 @@
 // 2017-01-03 GH  Created grid, mouseenter function
 // 2017-01-04 GH  Added Clear Grid functionality
 // 2017-01-05 GH  Added rand color to mouseenter event
+//                Fixed calculation of px size for squareClass
 //
 var defaultSize = 16; // Grid is even so this is both number of rows and cols
 var currentSize = defaultSize;
@@ -28,10 +29,8 @@ function initGrid(gridSize) {
 
   currentSize = gridSize;
 
-  // Adjust height and width of DIV elements based on gridSize
-  var squarePixelSize = Math.floor(containerSize/gridSize);
-  // Determine if floor would leave too much space and add .5 to keep float working
-  if (squarePixelSize + 1 === Math.round(containerSize/gridSize)) { squarePixelSize = squarePixelSize + 0.5;}
+  // Adjust height and width of DIV elements based on gridSize.  Round down to nearest tenth
+  var squarePixelSize = Math.floor((containerSize / gridSize) * 10) / 10;
   var styleString = ' Style="height:' + squarePixelSize + "px; width:" + squarePixelSize + 'px;"';
 
   // This is where the grid will be inserted
