@@ -7,14 +7,9 @@ This is the style sheet for the etchy-sketchy page
                 dynamically in etchy-sketchy.js
 */
 
-#clear-button {
-  width:  100px;
-  margin: 20px auto;
+#button-container {
+  text-align: center;
   padding: 0;
-}
-
-#clear-button:hover {
-  box-shadow: inset 0 0 10px #000000;
 }
 
 #grid-container {
